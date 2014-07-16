@@ -1,0 +1,18 @@
+<h1>Pelea!</h1>
+
+<%= @dragon.name %>
+<p>Elige tu oponente</p>
+
+
+<ul>
+<dl>
+	<% for man in @men %>
+	<dt><%= man.name %></dt>
+		<ul>
+		<%= link_to "Ataca", :controller => "dragons", :action => "fight", :id => @dragon.id, :guy => man %>
+	</ul>
+	<% end %>
+
+	</dl>
+</ul>
+

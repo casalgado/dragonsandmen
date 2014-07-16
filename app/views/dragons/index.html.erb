@@ -1,0 +1,20 @@
+<h1>Dragones</h1>
+<p>Elige tu Atacante</p>
+
+<ul>
+<dl>
+	<% for dragon in @dragons %>
+	<dt><%= dragon.name %></dt>
+		<dd> HP = <%= dragon.hp %>, Attack = <%= dragon.atk %></dd>
+		<ul>
+		<%= link_to "Entrenar", :controller => "dragons", :action => "practice", :id => dragon %>
+		<%= link_to "Pelea", :controller => "dragons", :action => "choose"  , :id => dragon %>
+	</ul>
+	<% end %>
+
+	</dl>
+</ul>
+
+
+
+<!-- <a href= "dragons/1/practice"/ > practice </a> -->

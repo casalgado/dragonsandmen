@@ -1,0 +1,8 @@
+<h1>Castillo</h1>
+<p>Entrena a los hombres</p>
+
+<%= form_for Man.new do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.submit %>
+	<% end %>

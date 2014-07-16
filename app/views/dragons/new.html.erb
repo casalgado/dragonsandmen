@@ -1,0 +1,8 @@
+<h1>Guarida</h1>
+<p>Crea un Dragon</p>
+
+<%= form_for Dragon.new do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.submit %>
+	<% end %>

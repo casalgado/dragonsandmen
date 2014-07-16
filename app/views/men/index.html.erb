@@ -1,0 +1,15 @@
+<h1>Hombres</h1>
+<p>Lista de Victimas</p>
+
+<ul>
+<dl>
+	<% for man in @men %>
+	<dt><%= man.name %></dt>
+		<dd> HP = <%= man.hp %>, Attack = <%= man.atk %></dd>
+		<ul>
+		<%= link_to "Entrenar", :controller => "men", :action => "practice", :id => man %>
+	</ul>
+	<% end %>
+
+	</dl>
+</ul>
