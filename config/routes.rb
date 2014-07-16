@@ -2,6 +2,7 @@ Paveque::Application.routes.draw do
 
 
 
+  devise_for :users
   
   resources :men do
     get 'practice', :on => :member
@@ -13,7 +14,6 @@ end
 end
   root 'dragons#new'
 
-    devise_for :users
 
 
 
