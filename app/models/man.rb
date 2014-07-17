@@ -9,6 +9,19 @@ class Man < ActiveRecord::Base
     self.hp <= 0
   end
 
+
+  def atacked_by(dragon)
+    self.hp -= dragon.atk
+    if self.dead?
+      self.deaths  += 1
+      self.hp       = 0
+      dragon.kills += 1
+      dragon.save
+    end
+      
+    self.save
+  end
+
   def atak(dragon)
   	dragon.hp -= self.atk
   	dragon.save
@@ -18,12 +31,10 @@ class Man < ActiveRecord::Base
   	ary = [1,2]
   	until self.dead? || dragon.dead?
   		if ary[rand(2)].even?
-  			self.atak(dragon)
+  			self.atacked_by(dragon)
   		else
-  			dragon.atak(self)
+  			dragon.atacked_by(self)
   		end
-  		self.save
-  		dragon.save
   	end
   end
 

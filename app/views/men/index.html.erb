@@ -5,7 +5,7 @@
 <dl>
 	<% for man in @men %>
 	<dt><%= man.name %></dt>
-		<dd> HP = <%= man.hp %>, Attack = <%= man.atk %></dd>
+		<dd> Vida = <%= man.hp %>, Poder = <%= man.atk %></dd>
 		<ul>
 		<%= link_to "Entrenar", :controller => "men", :action => "practice", :id => man %>
 	</ul>

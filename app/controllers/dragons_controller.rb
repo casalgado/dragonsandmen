@@ -1,4 +1,8 @@
 class DragonsController < ApplicationController
+
+  before_filter
+  
+
   def new
   end
 
@@ -17,6 +21,7 @@ class DragonsController < ApplicationController
     @dragon = Dragon.find(params[:id])
     @man    = Man.find(params[:guy])
     @dragon.fight(@man)
+ 
 
   end
 
@@ -30,6 +35,7 @@ class DragonsController < ApplicationController
   	@dragon.hp  = 100
   	@dragon.atk = 10
     @dragon.kills = 0
+    @dragon.deaths = 0
   	@dragon.save
   	redirect_to dragons_path
   end

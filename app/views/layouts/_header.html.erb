@@ -9,10 +9,10 @@
       <a class="brand" href= "http://localhost:3000/" >Dragons and Men</a>
       <div class="nav-collapse">
         <ul class="nav">
-          	<li><%= link_to "Guarida"  , :controller => "dragons", :action => "new"   %></li>
-						<li><%= link_to "Atacantes", :controller => "dragons", :action => "index" %></li>
-						<li><%= link_to "Castillo" , :controller => "men"    , :action => "new"   %></li>
-						<li><%= link_to "Victimas" , :controller => "men"    , :action => "index" %></li>
+          	<li><%= link_to "Guarida"  , new_dragon_path %></li>
+						<li><%= link_to "Atacantes", dragons_path %></li>
+						<li><%= link_to "Castillo" , new_man_path %></li>
+						<li><%= link_to "Ejercito" , men_path %></li>
         </ul>
       </div>
     </div>
