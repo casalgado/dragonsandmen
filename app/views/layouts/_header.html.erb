@@ -9,11 +9,11 @@
       <a class="brand" href= "http://localhost:3000/" >Dragons and Men</a>
       <div class="nav-collapse">
         <ul class="nav">
-          	<li><%= link_to "Guarida"  , new_dragon_path %></li>
-						<li><%= link_to "Atacantes", dragons_path %></li>
-						<li><%= link_to "Castillo" , new_man_path %></li>
-						<li><%= link_to "Ejercito" , men_path %></li>
-        </ul>
+          	<%= render 'layouts/dragonlinks' %>
+            <%= render 'layouts/login' %>
+            <%= render 'layouts/registration' %>
+          </ul>
+
       </div>
     </div>
   </div>

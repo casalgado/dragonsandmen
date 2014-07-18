@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <li><%= link_to "Guarida"    , new_dragon_path %></li>
+	<li><%= link_to "Atacantes"  , dragons_path %></li>
+	<li><%= link_to "Castillo"   , new_man_path %></li>
+	<li><%= link_to "Mis Hombres", my_men_user_men_path %></li>
+	<li><%= link_to "Ejercito"   , men_path %></li>
+<% else %>
+<% end %>

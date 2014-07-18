@@ -1,6 +1,5 @@
 class DragonsController < ApplicationController
 
-  before_filter
   
 
   def new
@@ -14,15 +13,16 @@ class DragonsController < ApplicationController
   end
 
   def index
-  	@dragons = Dragon.all
+  	@dragons = current_user.dragons
   end
+
 
   def fight
     @dragon = Dragon.find(params[:id])
     @man    = Man.find(params[:guy])
     @dragon.fight(@man)
- 
-
+    redirect_to men_path if @dragon.dead?
+    redirect_to dragons_path if @man.dead?
   end
 
   def choose
@@ -31,13 +31,12 @@ class DragonsController < ApplicationController
   end
 
   def create
-  	@dragon = Dragon.new(dragon_params)
-  	@dragon.hp  = 100
-  	@dragon.atk = 10
-    @dragon.kills = 0
-    @dragon.deaths = 0
-  	@dragon.save
+  	@dragon = current_user.dragons.new(dragon_params)
+    if @dragon.save
   	redirect_to dragons_path
+    else
+    redirect_to new_dragon_path
+    end
   end
 
   def practice

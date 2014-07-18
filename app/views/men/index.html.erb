@@ -4,10 +4,12 @@
 <ul>
 <dl>
 	<% for man in @men %>
-	<dt><%= man.name %></dt>
+	<dt><%= man.user.email %> <%= man.name %></dt>
 		<dd> Vida = <%= man.hp %>, Poder = <%= man.atk %></dd>
 		<ul>
-		<%= link_to "Entrenar", :controller => "men", :action => "practice", :id => man %>
+		<% if current_user == man.user %>
+			<%= link_to "Entrenar", :controller => "men", :action => "practice", :id => man %>
+		<% end %>
 	</ul>
 	<% end %>
 

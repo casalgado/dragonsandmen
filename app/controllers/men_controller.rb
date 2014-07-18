@@ -1,29 +1,36 @@
 class MenController < ApplicationController
+
+  attr_accessor :user_id
+  
   def new
   end
 
   def edit
+    @men = current_user.men
+  end
+
+  def my_men
+    @men = current_user.men
   end
 
   def index
-  	@men = Man.all
+    @men = Man.where.not(user_id: current_user.id)
   end
 
   def practice
     @man = Man.find(params[:id])
     @man.lvlup
     @man.save
-    redirect_to men_path
+    redirect_to my_men_user_men_path
   end
 
   def create
-  	@man = Man.new(man_params)
-  	@man.hp  = 100
-  	@man.atk = 10
-    @man.kills = 0
-    @man.deaths = 0
-  	@man.save
-  	redirect_to men_path
+  	@man = current_user.men.new(man_params)
+    if @man.save
+    redirect_to my_men_user_men_path
+    else
+    redirect_to new_man_path
+    end
   end
 
 

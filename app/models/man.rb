@@ -1,25 +1,15 @@
 class Man < ActiveRecord::Base
 
-	def lvlup
-		self.hp  += 100
-		self.atk += 10
-	end
+  validates :name, presence: true
+
+  include Player
 
 	def dead?
     self.hp <= 0
   end
 
-
-  def atacked_by(dragon)
-    self.hp -= dragon.atk
-    if self.dead?
-      self.deaths  += 1
-      self.hp       = 0
-      dragon.kills += 1
-      dragon.save
-    end
-      
-    self.save
+  def hp_inc
+    10
   end
 
   def atak(dragon)

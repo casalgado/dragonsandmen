@@ -11,27 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717162356) do
+ActiveRecord::Schema.define(version: 20140718145011) do
 
   create_table "dragons", force: true do |t|
     t.string   "name"
-    t.integer  "hp"
-    t.integer  "atk"
+    t.integer  "hp",         default: 100
+    t.integer  "atk",        default: 10
+    t.integer  "deaths",     default: 0
+    t.integer  "kills",      default: 0
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "kills"
-    t.integer  "deaths"
   end
 
   create_table "men", force: true do |t|
     t.string   "name"
-    t.integer  "hp"
-    t.integer  "atk"
-    t.integer  "kills"
-    t.integer  "deaths"
+    t.integer  "hp",         default: 100
+    t.integer  "atk",        default: 10
+    t.integer  "kills",      default: 0
+    t.integer  "deaths",     default: 0
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "men", ["user_id"], name: "index_men_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

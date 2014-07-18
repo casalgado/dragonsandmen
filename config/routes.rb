@@ -4,15 +4,28 @@ Paveque::Application.routes.draw do
 
   devise_for :users
   
-  resources :men do
-    get 'practice', :on => :member
+resources :men do
+  get 'practice', :on => :member
 end
-  resources :dragons do
+
+resources :dragons do
   get 'practice', :on => :member
   get 'fight'   , :on => :member
   get 'choose'  , :on => :member
 end
-  root 'dragons#new'
+
+resource :user, except: [:index, :destroy, :new, :create] do 
+  resources :men,     only: [] do
+    collection do
+      get 'my_men'
+    end
+  end
+  resources :dragons, only: []   
+end
+
+devise_scope :user do
+  root to: "devise/sessions#new"
+end
 
 
 
