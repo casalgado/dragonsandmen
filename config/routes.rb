@@ -14,7 +14,8 @@ resources :dragons do
   get 'choose'  , :on => :member
 end
 
-resource :user, except: [:index, :destroy, :new, :create] do 
+resource :user, except: [:index, :destroy, :new, :create] do
+  get 'sidebar'
   resources :men,     only: [] do
     collection do
       get 'my_men'

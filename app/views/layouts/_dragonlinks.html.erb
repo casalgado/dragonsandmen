@@ -1,8 +1,28 @@
 <% if user_signed_in? %>
-  <li><%= link_to "Guarida"    , new_dragon_path %></li>
-	<li><%= link_to "Atacantes"  , dragons_path %></li>
-	<li><%= link_to "Castillo"   , new_man_path %></li>
-	<li><%= link_to "Mis Hombres", my_men_user_men_path %></li>
-	<li><%= link_to "Ejercito"   , men_path %></li>
+	<li>	<div class="dropdown">
+  	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    Guarida
+    <span class="caret"></span>
+  	</button>
+	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	     <li><%= link_to "Encubadora",  new_dragon_path %></li>
+	     <li><%= link_to "Dragones",    dragons_path %></li>
+	     <!-- <li role="presentation" class="divider"></li> -->
+	  </ul>
+		</div> 
+	</li>
+	<li>   </li>
+	<li>	<div class="dropdown">
+  	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+    Castillo
+    <span class="caret"></span>
+  	</button>
+	  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+	     <li><%= link_to "Entrenamiento", new_man_path %>         </li>
+		   <li><%= link_to "Hombres",       my_men_user_men_path %> </li> 
+	     <!-- <li role="presentation" class="divider"></li> -->
+	  </ul>
+	</div> </li>
+	<li><%= link_to "Enemigos"   , men_path %></li>
 <% else %>
 <% end %>

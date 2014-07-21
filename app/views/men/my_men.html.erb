@@ -1,11 +1,20 @@
-<h1>Hombres Locales</h1>
-<p> Lista de Victimas</p>
+<h1>Hombres</h1>
+<p> Tus Defensores </p>
+	<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 
 <ul>
 <dl>
 	<% for man in @men %>
 	<dt><%= man.name %></dt>
-		<dd> Vida = <%= man.hp %>, Poder = <%= man.atk %></dd>
+				<dd> Vida = <%= man.hit_points %>, Poder = <%= man.damage %> 
+				<% if man.active? %>
+			  <%= "Activo" %>
+				<% else %> 
+				Espera: <%= man.time_until_active %>
+				<% end %>
+		</dd>
 		<ul>
 		<%= link_to "Entrenar", practice_man_path(man) %>
 	</ul>

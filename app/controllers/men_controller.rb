@@ -1,7 +1,7 @@
 class MenController < ApplicationController
 
-  attr_accessor :user_id
-  
+  before_action :authenticate_user!, except: [:create]  
+
   def new
   end
 
@@ -19,9 +19,13 @@ class MenController < ApplicationController
 
   def practice
     @man = Man.find(params[:id])
-    @man.lvlup
-    @man.save
-    redirect_to my_men_user_men_path
+      if @man.active?
+      @man.lvlup
+      flash[:notice] = "Level Up!"
+      else
+      flash[:notice] = "Not allowed to train yet"
+      end
+      redirect_to my_men_user_men_path
   end
 
   def create

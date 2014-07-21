@@ -1,6 +1,6 @@
 class DragonsController < ApplicationController
 
-  
+  before_action :authenticate_user!, except: [:create]  
 
   def new
   end
@@ -21,8 +21,13 @@ class DragonsController < ApplicationController
     @dragon = Dragon.find(params[:id])
     @man    = Man.find(params[:guy])
     @dragon.fight(@man)
-    redirect_to men_path if @dragon.dead?
-    redirect_to dragons_path if @man.dead?
+    if @dragon.dead?
+    flash[:notice] = "#{@man.name} ha vencido!"
+    redirect_to men_path   
+    elsif @man.dead?
+    flash[:notice] = "#{@dragon.name} ha vencido!"
+    redirect_to dragons_path
+    end
   end
 
   def choose
@@ -41,9 +46,13 @@ class DragonsController < ApplicationController
 
   def practice
   	@dragon = Dragon.find(params[:id])
-  	@dragon.lvlup
-  	@dragon.save
-  	redirect_to dragons_path
+      if @dragon.active?
+      @dragon.lvlup
+      flash[:notice] = "Level Up!"
+      else
+      flash[:notice] = "Not allowed to train yet"
+      end
+      redirect_to dragons_path
   end
 
   private

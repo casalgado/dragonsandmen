@@ -15,10 +15,12 @@ ActiveRecord::Schema.define(version: 20140718145011) do
 
   create_table "dragons", force: true do |t|
     t.string   "name"
-    t.integer  "hp",         default: 100
-    t.integer  "atk",        default: 10
-    t.integer  "deaths",     default: 0
-    t.integer  "kills",      default: 0
+    t.integer  "hit_points",    default: 100
+    t.integer  "damage",        default: 10
+    t.integer  "kills",         default: 0
+    t.integer  "deaths",        default: 0
+    t.integer  "level",         default: 1
+    t.datetime "time_of_death", default: '2014-07-20 20:15:23'
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -26,10 +28,12 @@ ActiveRecord::Schema.define(version: 20140718145011) do
 
   create_table "men", force: true do |t|
     t.string   "name"
-    t.integer  "hp",         default: 100
-    t.integer  "atk",        default: 10
-    t.integer  "kills",      default: 0
-    t.integer  "deaths",     default: 0
+    t.integer  "hit_points",    default: 100
+    t.integer  "damage",        default: 10
+    t.integer  "kills",         default: 0
+    t.integer  "deaths",        default: 0
+    t.integer  "level",         default: 1
+    t.datetime "time_of_death", default: '2014-07-20 20:15:23'
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

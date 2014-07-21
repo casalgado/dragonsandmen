@@ -17,3 +17,15 @@ body {
     
 }
 
+.dropdown {
+    display:inline;
+    padding: 20px 5px;
+    border-right: 1px;
+}
+
+div.notice {
+	position: fixed;
+	top: 125px;
+	left: 200px;
+}
+

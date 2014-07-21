@@ -1,14 +1,24 @@
 <h1>Dragones</h1>
 <p>Elige tu Atacante</p>
-
+	<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 <ul>
 <dl>
 	<% for dragon in @dragons %>
 	<dt><%= dragon.name %></dt>
-		<dd> Vida = <%= dragon.hp %>, Poder = <%= dragon.atk %></dd>
+		<dd> Vida = <%= dragon.hit_points %>, Poder = <%= dragon.damage %> 
+				<% if dragon.active? %>
+			  <%= "Activo" %>
+				<% else %> 
+				Espera: <%= dragon.time_until_active %>
+				<% end %>
+		</dd>
+		<dd> <%= @inactivity.to_s %> </dd>
+														
 		<ul>
-		<%= link_to "Entrenar", :controller => "dragons", :action => "practice", :id => dragon %>
-		<%= link_to "Pelea", :controller => "dragons", :action => "choose"  , :id => dragon %>
+		<%= link_to "Entrenar", practice_dragon_path(dragon) %>
+		<%= link_to "Pelea",      choose_dragon_path(dragon) %>
 	</ul>
 	<% end %>
 

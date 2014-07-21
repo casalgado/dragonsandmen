@@ -5,10 +5,10 @@
 <dl>
 	<% for man in @men %>
 	<dt><%= man.user.email %> <%= man.name %></dt>
-		<dd> Vida = <%= man.hp %>, Poder = <%= man.atk %></dd>
+		<dd> Vida = <%= man.hit_points %>, Poder = <%= man.damage %></dd>
 		<ul>
 		<% if current_user == man.user %>
-			<%= link_to "Entrenar", :controller => "men", :action => "practice", :id => man %>
+			<%= link_to "Entrenar", practice_man_path(man) %>
 		<% end %>
 	</ul>
 	<% end %>

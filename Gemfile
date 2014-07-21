@@ -26,6 +26,7 @@ gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem "less-rails"
 gem "devise"
+gem 'debugger'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -47,5 +48,5 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+#Use debugger
+#gem 'debugger', group: [:development, :test]
