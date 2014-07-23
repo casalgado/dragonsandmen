@@ -11,7 +11,7 @@
 <ul>
 <dl>
 	<% for man in @men %>
-	<dt><%= man.name %></dt>
+	<dt id="link_player"><%= link_to "#{man.name}", edit_man_path(man) %></dt>
 				<dd> Vida = <%= man.hit_points %>, Poder = <%= man.damage %> 
 				<% if man.active? %>
 			  <%= "Activo" %>

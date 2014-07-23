@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722200147) do
+ActiveRecord::Schema.define(version: 20140723132823) do
+
+  create_table "dragonmedals", force: true do |t|
+    t.string   "type_of_medal"
+    t.integer  "dragon_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "dragons", force: true do |t|
     t.string   "name"
@@ -20,8 +27,15 @@ ActiveRecord::Schema.define(version: 20140722200147) do
     t.integer  "kills",         default: 0
     t.integer  "deaths",        default: 0
     t.integer  "level",         default: 1
-    t.datetime "time_of_death", default: '2014-07-22 20:25:05'
+    t.datetime "time_of_death", default: '2014-07-23 16:20:43'
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "manmedals", force: true do |t|
+    t.string   "type_of_medal"
+    t.integer  "man_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140722200147) do
     t.integer  "kills",         default: 0
     t.integer  "deaths",        default: 0
     t.integer  "level",         default: 1
-    t.datetime "time_of_death", default: '2014-07-22 20:25:05'
+    t.datetime "time_of_death", default: '2014-07-23 16:20:43'
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

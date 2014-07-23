@@ -6,7 +6,7 @@ class MenController < ApplicationController
   end
 
   def edit
-    @men = current_user.men
+    @man = Man.find(params[:id])
   end
 
   def my_men

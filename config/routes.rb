@@ -2,6 +2,14 @@ Paveque::Application.routes.draw do
 
 
 
+  get "manmedals/new"
+  get "manmedals/create"
+  get "manmedals/edit"
+  get "manmedals/show"
+  get "dragonmedals/new"
+  get "dragonmedals/create"
+  get "dragonmedals/edit"
+  get "dragonmedals/show"
   devise_for :users
   
 resources :men do
@@ -29,6 +37,8 @@ devise_scope :user do
   root to: "devise/sessions#new"
 end
 
+resources :dragonmedals, only: [:create, :show]
+resources :manmedals,    only: [:create, :show]
 
 
 

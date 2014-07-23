@@ -12,7 +12,7 @@
 <ul>
 <dl>
 	<% for dragon in @dragons %>
-	<dt><%= dragon.name %></dt>
+	<dt id="link_player"><%= link_to "#{dragon.name}", edit_dragon_path(dragon) %></dt>
 		<dd> Vida = <%= dragon.hit_points %>, Poder = <%= dragon.damage %> 
 				<% if dragon.active? %>
 			  <%= "Activo" %>

@@ -1,2 +1,23 @@
-<h1>Dragons#edit</h1>
-<p>Find me in app/views/dragons/edit.html.erb</p>
+<h3><%= @dragon.name %></h3>
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<div>
+<dl>
+	<dt>Vida</dt>
+		<dd><%= @dragon.hit_points %> </dd>
+	<dt>Ataque</dt>
+		<dd><%= @dragon.damage %> </dd>
+	<dt>Victorias</dt>
+		<dd><%= @dragon.kills %> </dd>
+	<dt>Derrotas</dt>
+		<dd><%= @dragon.deaths %> </dd>
+	<dt>Medals</dt>
+		<dd><%= @dragon.dragonmedals.count %> Medallas</dd>
+		<dd><%= link_to "Medallas", :controller => "dragonmedals", :action => "create", :id => @dragon.id %></dd>
+	</dl>
+
+	</div>
+														

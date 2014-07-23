@@ -13,8 +13,11 @@
  */
 
 body { 
-    padding-top: 65px; 
-    
+    padding-top: 65px;
+}
+
+h1 {
+	color: white;
 }
 
 .dropdown {
@@ -67,16 +70,17 @@ ul.fight_list {
 		margin-top: 10px;
 }
 
-div.middle_column a:link, div.middle_column a:active {
+div.middle_column a:link, div.middle_column a:visited, div.middle_column a:active {
   color: #f8f8ff;
   text-decoration: none;
 }
 
-div.middle_column a:visited {
-  color: #cd2626;
+
+#link_player a:link, #link_player a:active, #link_player a:hover, #link_player a:visited {
+	list-style-type: none;
+	text-decoration: none;
+	color: black;
 }
-
-
 
 
 

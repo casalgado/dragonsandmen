@@ -1,15 +1,18 @@
-<h1>Hombres Locales</h1>
-<p> Lista de Victimas</p>
+<h3><%= @man.name %></h3>
 
-<ul>
+
+
+<div>
 <dl>
-	<% for man in @men %>
-	<dt><%= man.name %></dt>
-		<dd> Vida = <%= man.hit_points %>, Poder = <%= man.damage %></dd>
-		<ul>
-		<%= link_to "Entrenar", practice_man_path(man) %>
-	</ul>
-	<% end %>
-
+	<dt>Vida</dt>
+		<dd><%= @man.hit_points %> </dd>
+	<dt>Ataque</dt>
+		<dd><%= @man.damage %> </dd>
+	<dt>Victorias</dt>
+		<dd><%= @man.kills %> </dd>
+	<dt>Derrotas</dt>
+		<dd><%= @man.deaths %> </dd>
 	</dl>
-</ul>
+
+	</div>
+														

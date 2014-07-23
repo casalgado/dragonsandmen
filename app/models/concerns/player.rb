@@ -1,13 +1,13 @@
 require 'active_support/concern'
 require 'active_support/core_ext/numeric'
-require 'debugger'
+
 
 module Player
   extend ActiveSupport::Concern
 
   included do
   	belongs_to :user
-  	validates  :user, presence: true
+  	validates  :user,   presence: true
     # scope :disabled, -> { where(disabled: true) }
   end
 
@@ -30,18 +30,19 @@ module Player
     end
   end
 
-  def atacked_by(player)
-       self.hit_points -= player.damage
-    if self.dead?
-       self.deaths     += 1
-       self.hit_points  = 0
-       player.kills    += 1
+  def atack(player)
+       player.hit_points -= self.damage
+    if player.dead?
+       player.deaths     += 1
+       player.hit_points  = 0
+       self.kills    += 1
        player.save
-       defender = User.find(self.user_id)
-       attacker = User.find(player.user_id)
-       attacker.user_money += self.level
+
+       attacker = User.find(self.user_id)
+       defender = User.find(player.user_id)
+       attacker.user_money += player.level
        attacker.save
-       defender.user_money -= self.level
+       defender.user_money -= player.level
        defender.save
     end
     self.save
@@ -55,9 +56,9 @@ module Player
     ary = [1,2]
     until self.dead? || player.dead?
       if ary[rand(2)].even?
-         self.atacked_by(player)
+         self.atack(player)
       else
-         player.atacked_by(self)
+         player.atack(self)
       end
     end
  
