@@ -20,14 +20,8 @@ class DragonsController < ApplicationController
   def fight
     @dragon = Dragon.find(params[:id])
     @man    = Man.find(params[:guy])
-    @dragon.fight(@man)
-    if @dragon.dead?
-    flash[:notice] = "#{@man.name} ha vencido!"
-    redirect_to men_path   
-    elsif @man.dead?
-    flash[:notice] = "#{@dragon.name} ha vencido!"
-    redirect_to dragons_path
-    end
+#     @dragon.fight(@man)
+
   end
 
   def choose
@@ -37,11 +31,20 @@ class DragonsController < ApplicationController
 
   def create
   	@dragon = current_user.dragons.new(dragon_params)
-    if @dragon.save
-  	redirect_to dragons_path
+    if current_user.user_money >= 10
+      if @dragon.save
+      current_user.create_dragon_cost
+
+    	redirect_to dragons_path
+      else
+      flash[:notice] = "Invalid Params"
+      redirect_to new_dragon_path
+      end
     else
-    redirect_to new_dragon_path
+      flash[:notice] = "Not enough Money"
+      redirect_to :back
     end
+
   end
 
   def practice
@@ -54,6 +57,20 @@ class DragonsController < ApplicationController
       end
       redirect_to dragons_path
   end
+
+  def engage
+    @dragon = Dragon.find(params[:id])
+    @man    = Man.find(params[:guy])
+    @dragon.fight(@man)
+     if @dragon.dead?
+     flash[:notice] = "#{@man.name} ha vencido!"
+     elsif @man.dead?
+     flash[:notice] = "#{@dragon.name} ha vencido!"
+     end
+     redirect_to :back
+
+  end
+
 
   private
 

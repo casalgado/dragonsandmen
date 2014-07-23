@@ -12,6 +12,7 @@ resources :dragons do
   get 'practice', :on => :member
   get 'fight'   , :on => :member
   get 'choose'  , :on => :member
+  get 'engage'  , :on => :member
 end
 
 resource :user, except: [:index, :destroy, :new, :create] do

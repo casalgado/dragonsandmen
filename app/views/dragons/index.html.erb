@@ -1,8 +1,14 @@
 <h1>Dragones</h1>
 <p>Elige tu Atacante</p>
+
+
 	<% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
+
+  <%= render "dragons/sidebar" %>
+
+  
 <ul>
 <dl>
 	<% for dragon in @dragons %>

@@ -1,5 +1,24 @@
 <h1>Pelea!</h1>
 
-<%= @dragon.name %>
-V.S.
-<%= @man.name %>
+  <%= render "dragons/sidebar" %>
+<div class="column_1">
+	<ul class="fight_list">
+		<li><%= @dragon.name %></li>
+		<li>Vida = <%= @dragon.hit_points %></li>
+		<li>Ataque = <%= @dragon.damage %></li>
+		<li>Nivel = <%= @dragon.level %></li>
+	</ul>
+</div>
+
+<div class="middle_column">
+		<p> <%= link_to "VS", :controller => "dragons", :action => "engage", :id => @dragon.id, :guy => @man.id %> </p>
+</div>
+
+<div class="column_2">
+	<ul class="fight_list">
+		<li><%= @man.name %></li>
+		<li>Vida = <%= @man.hit_points %></li>
+		<li>Ataque = <%= @man.damage %></li>
+		<li>Nivel = <%= @man.level %></li>
+	</ul>
+</div>

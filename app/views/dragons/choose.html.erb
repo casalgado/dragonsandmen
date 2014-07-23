@@ -3,14 +3,18 @@
 <%= @dragon.name %>
 <p> Elige tu oponente </p>
 
+<%= render "dragons/sidebar" %>
 
 <ul>
 <dl>
 	<% for man in @men %>
+	<% if man.hit_points > 0 %>
 	<dt><%= man.name %></dt>
+		<dd>Level = <%= man.level %></dd>
 		<ul>
 			<%= link_to "Ataca", :controller => "dragons", :action => "fight", :id => @dragon.id, :guy => man %>
   	</ul>
+  	<% end %>
 	<% end %>
 
 	</dl>

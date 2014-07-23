@@ -4,7 +4,7 @@ class Man < ActiveRecord::Base
 
   include Player
 
-  def hit_point_increase
+  def damage_increase
     10
   end
 

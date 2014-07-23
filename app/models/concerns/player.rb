@@ -23,7 +23,7 @@ module Player
   def lvlup
     if self.active?
     self.hit_points   += 100
-    self.damage       += self.hit_point_increase
+    self.damage       += self.damage_increase
     self.level        += 1
     self.time_of_death = Time.now 
     self.save
@@ -37,6 +37,12 @@ module Player
        self.hit_points  = 0
        player.kills    += 1
        player.save
+       defender = User.find(self.user_id)
+       attacker = User.find(player.user_id)
+       attacker.user_money += self.level
+       attacker.save
+       defender.user_money -= self.level
+       defender.save
     end
     self.save
   end

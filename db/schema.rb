@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718145011) do
+ActiveRecord::Schema.define(version: 20140722200147) do
 
   create_table "dragons", force: true do |t|
     t.string   "name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140718145011) do
     t.integer  "kills",         default: 0
     t.integer  "deaths",        default: 0
     t.integer  "level",         default: 1
-    t.datetime "time_of_death", default: '2014-07-20 20:15:23'
+    t.datetime "time_of_death", default: '2014-07-22 20:25:05'
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140718145011) do
     t.integer  "kills",         default: 0
     t.integer  "deaths",        default: 0
     t.integer  "level",         default: 1
-    t.datetime "time_of_death", default: '2014-07-20 20:15:23'
+    t.datetime "time_of_death", default: '2014-07-22 20:25:05'
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140718145011) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_money",             default: 10
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
